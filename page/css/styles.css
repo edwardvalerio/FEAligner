@@ -1,0 +1,15 @@
+body {
+
+    margin: 0px;
+    padding: 5px;
+}
+
+#fe-wrapper {
+
+    margin: auto;
+    width: 350px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    padding: 10px;
+
+}

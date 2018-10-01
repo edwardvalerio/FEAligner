@@ -1,0 +1,13 @@
+#mockimg {
+
+    width: auto;
+    position:fixed;
+    z-index: 99999999;
+    top:0px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.5;
+
+}
+
+
