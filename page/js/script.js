@@ -31,9 +31,7 @@ function sendToContent(file) {
 
         reader.addEventListener("load", function () {
 
-
             chrome.runtime.sendMessage({"message": "bg_mock", "src": reader.result});
-
 
         }, false);
 

@@ -5,25 +5,122 @@ chrome.runtime.onMessage.addListener(
 
     if( request.message === "create_mock" ) {
 
-             createFrontEndView(request.src)
+          var viewer = new FEViewer();
+          viewer.createFrontEndView(request.src);
 
     }
   }
 );
 
 
+var FEViewer = function() {
 
-function createFrontEndView(img) {
+    this.assets = [];
+    this.image = "";
+    this.cssPath = "";
 
-        var image = "<img  draggable='true' id='mockimg' src='" + img + "' />";
-        $("body").append(image);
+    this.createFrontEndView = function(src) {
 
-        var cssPath = chrome.extension.getURL('/page/css/front-end.css');
-        var cssScript = '<link  href="' + cssPath  + '" rel="stylesheet" />';
+        this.image = "<img id='mockimg' class='fe-viewer-asset' src='" + src + "' />";
 
-        $("body").append(cssScript);
+        var cssScript = '<link class="fe-viewer-asset" href="' + this.getPath('/page/css/front-end.css') + '" rel="stylesheet" />';
+
+        this.assets.push([this.image, cssScript]);
+
+
+
+        this.loadToolBar();
+        this.loadToDom();
+        this.setUpEventListeners(this);
+
+
+
+    };
+
+
+
+    this.getPath = function(dir) {
+
+         return chrome.extension.getURL(dir);
+
+
+    };
+
+
+
+
+    this.loadToolBar = function() {
+
+
+        $('<div/>',{
+            id: 'fe-tool-container',
+            class: 'fe-viewer-asset'
+        }).appendTo('body');
+
+        $("#fe-tool-container").load(this.getPath('/page/modules/toolbar.html'));
+
+    };
+
+    this.loadToDom = function() {
+
+    for(var i = 0; i < this.assets.length; i++) {
+
+         $("body").append(this.assets[i]);
+
+    }
+
+
+    }
+
+    this.setUpEventListeners = function(viewer) {
+
+            $(document).on('click', '#fe-x', function(e){
+
+                   viewer.removeViewer();
+
+            });
+
+
+    };
+
+
+
+    this.removeViewer = function() {
+
+
+            $(".fe-viewer-asset").each(function(){
+
+                $(this).remove();
+
+            });
+
+
+    }
+
+
+    this.hideViewer = function() {
+
+         $(".fe-viewer-asset").each(function(){
+
+                $(this).hide();
+
+            })
+
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
