@@ -1,6 +1,56 @@
+<script>
+
+    $(document).ready(function(){
+
+        // $("#mockimg").draggable();
+
+    });
+
+
+</script>
+
 <div id="fe-toolbar">
  <div id="fe-tool-set">
     <div id="fe-x">X</div>
+
+     <div id="fe-hide-btn"></div>
+
+    <div id="fe-controllers">
+
+
+
+
+
+       <div id="fe-opacity-container">
+            <span>Opacity <i class="fe-percent"></i></span>
+            <input type="range" id="fe-opacity" name="fe-opacity" min="0" max="100" value="70" step="2" />
+
+       </div>
+
+       <div id="fe-directional">
+             <span>Aligment</span>
+
+           <div id="fe-directional-controllers">
+             <i class="fe-arrow up" data-direction="up"></i>
+             <i class="fe-arrow down" data-direction="down"></i>
+             <i class="fe-arrow left" data-direction="left"></i>
+             <i class="fe-arrow right" data-direction="right"></i>
+
+             <div id="fe-center" class="fe-arrow center" data-direction="center"></div>
+
+           </div>
+
+       </div>
+
+
+       <div id="toggleView"> Toggle View </div>
+
+
+
+
+
+
+    </div>
 
   </div>
 </div>

@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-    console.log("test");
+
 
     $("#fe-file").change(function(){
 
@@ -32,6 +32,8 @@ function sendToContent(file) {
         reader.addEventListener("load", function () {
 
             chrome.runtime.sendMessage({"message": "bg_mock", "src": reader.result});
+
+            window.close();
 
         }, false);
 

@@ -1,35 +1,60 @@
 #mockimg {
-
-    width: auto;
-    position:fixed;
+    width: 100%;
+    position: fixed !important;
     z-index: 9999999;
-    top:0px;
-    left: 50%;
-    transform: translateX(-50%);
-    opacity: 0.5;
-
+    top: 0px;
+    left: 0px;
+    opacity: 0.7;
+    display: block;
+    height: 100%;
+    background-position: center top;
+    background-size: auto auto;
+    cursor: move;
 }
 
+#mockimg img {
+    width: auto;
+}
+
+#mockimg:hover {
+    cursor: move;
+}
+
+#mockimg.active {
+    display: none;
+}
 
 #fe-tool-container {
-
     z-index: 99999999;
     top: 15px;
     right: 15px;
-    position: fixed;
+    position: fixed !important;
     border: 1px solid #ddd;
-    border-radius: 10px;
-    height: 55px;
-    background: #cdcdcd;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+    background: #ffffff;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%, #e5e5e5 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5', GradientType=0);
+    /* IE6-9 */
     width: 300px;
+    transition: all .2s;
+    box-shadow: 6px 5px 35px #9a9a9a;
+}
 
+#fe-tool-container.hidden {
+    right: -299px;
 }
 
 #fe-tool-set {
-
     position: relative;
     width: 100%;
-    height: 55px;
 }
 
 #fe-x {
@@ -38,14 +63,192 @@
     right: 5px;
     border-radius: 50%;
     border: 0px solid #000;
-    line-height: 25px;
-    width: 25px;
+    line-height: 21px;
+    width: 20px;
+    font-size: 14px;
     box-sizing: border-box;
     text-align: center;
     display: block;
     cursor: pointer;
-    background: #000;
-    color: white;
+    background: #fff;
+    color: #000;
 }
 
+#fe-hide-btn {
+    position: absolute;
+    height: 25%;
+    left: -18px;
+    width: 18px;
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#6db3f2+0,54a3ee+50,3690f0+51,1e69de+100;Blue+Gloss+%233 */
+    background: #6db3f2;
+    /* Old browsers */
+    background: -moz-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+    /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+    /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #6db3f2 0%, #54a3ee 50%, #3690f0 51%, #1e69de 100%);
+    /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6db3f2', endColorstr='#1e69de', GradientType=0);
+    /* IE6-9 */
+    cursor: pointer;
+}
 
+#fe-hide-btn:before {
+    content: "";
+    position: relative;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 11px solid white;
+    top: 50%;
+    height: 0px;
+    width: 0px;
+    left: 4px;
+    display: block;
+    transform: translateY(-50%);
+    transition: all .2s;
+}
+
+#fe-controllers {
+    padding-bottom: 25px;
+}
+
+#fe-tool-container.hidden #fe-hide-btn:before {
+    border-right: 11px solid white;
+    border-left: 0px solid white;
+}
+
+#fe-opacity-container {
+    text-align: left;
+    width: 90%;
+    margin: auto;
+    padding-top: 35px;
+    padding-bottom: 15px;
+}
+
+#fe-opacity-container span {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 5px;
+}
+
+#fe-opacity-container .fe-percent {
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+}
+
+#fe-opacity-container input {
+    width: 100%;
+    display: block;
+    background: #ddd;
+    border-radius: 15px;
+    height: 7px;
+    margin-top: 9px;
+}
+
+#fe-directional {
+    margin: auto;
+    width: 90%;
+    position: relative;
+    height: 180px;
+}
+
+#fe-directional span {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    padding-bottom: 5px;
+}
+
+#fe-directional-controllers {
+    position: relative;
+    width: 100%;
+    padding-bottom: 25px;
+}
+
+#fe-directional-controllers i {
+    position: absolute;
+    z-index: 99;
+    border: solid black;
+    border-width: 0 6px 6px 0;
+    display: inline-block;
+    padding: 6px;
+    cursor: pointer;
+    transition: all .2s;
+}
+
+#fe-directional-controllers i:hover {
+    border: solid #018af3;
+    border-width: 0 6px 6px 0;
+}
+
+.fe-arrow.up {
+    left: 50%;
+    top: 25px;
+    transform: translateX(-50%) rotate(-135deg);
+    -webkit-transform: translateX(-50%) rotate(-135deg);
+}
+
+.fe-arrow.down {
+    left: 50%;
+    top: 85px;
+    transform: translateX(-50%) rotate(45deg);
+    -webkit-transform: translateX(-50%) rotate(45deg);
+}
+
+.fe-arrow.left {
+    left: 40%;
+    top: 55px;
+    transform: translateX(-50%) rotate(135deg);
+    -webkit-transform: translateX(-50%) rotate(135deg);
+}
+
+.fe-arrow.right {
+    left: 60%;
+    top: 55px;
+    transform: translateX(-50%) rotate(-45deg);
+    -webkit-transform: translateX(-50%) rotate(-45deg);
+}
+
+.fe-arrow.center {
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background: black;
+    cursor: pointer;
+    padding: 0px;
+}
+
+.fe-arrow.center:hover {
+    background: #018af3;
+    transition: all .2s;
+}
+
+#toggleView {
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 80%;
+    cursor: pointer;
+    background: #018af3;
+    transition: all .2s;
+    border-radius: 4px;
+    margin-top: 15px;
+    margin: auto;
+    margin-bottom: 35px;
+}
+
+#toggleView:hover {
+    background: #0179d5;
+}
+
+#toggleView.active {
+    opacity: 0.3;
+}
